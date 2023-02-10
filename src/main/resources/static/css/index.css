@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(210,210,210);
+}
+header, .row {
+    display: flex;
+    background-color: rgb(220,220,220);
+}
+
+.col {
+    flex: 1;
+    background-color: rgb(200,200,200);
+    border-color: rgb(190,190,190);
+    border-style: solid;
+}

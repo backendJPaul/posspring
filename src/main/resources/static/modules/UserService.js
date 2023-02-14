@@ -2,6 +2,15 @@ export class UserService{
     constructor(url){
         this.url = url;
     }
+    async delete(id){
+        const request = await fetch(this.url + "/" + id,{
+            method : "DELETE",
+            headers:{
+
+            }    
+        });
+    }
+
     async update(userData){
         const request = await fetch(this.url, {
             method: "PUT",

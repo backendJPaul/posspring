@@ -41,6 +41,10 @@ for(let user of users) {
 
     let deleteButton = document.createElement("button");
     deleteButton.setAttribute("id","deleteButton" + user.id);
+    deleteButton.addEventListener("click",deleteUser);
+    function deleteUser(){
+        window.location.href = "delete.html?id=" + user.id;
+    }
     deleteButton.innerHTML = "delete";
 
     userActions.appendChild(updateButton);

@@ -13,11 +13,13 @@ const roleService = new RoleService("api/roles");
     }
 
     document.getElementById("createUserButton").addEventListener("click",actionButton);
-    function actionButton() {
+    async function actionButton() {
         let userData = {
             name: document.getElementById("nameText").value,
-            password : document.getElementById("passwordPassword").value,
-            idRole : document.getElementById("roleSelect").selectedIndex
+            password: document.getElementById("passwordPassword").value,
+            idRole: document.getElementById("roleSelect").selectedIndex
         };
+        let user = await userService.save(userData);
+        alert(user.name);
         window.location.href = "index.html";
     }

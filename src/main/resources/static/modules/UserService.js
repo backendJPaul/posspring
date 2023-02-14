@@ -2,6 +2,38 @@ export class UserService{
     constructor(url){
         this.url = url;
     }
+    async update(userData){
+        const request = await fetch(this.url, {
+            method: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        });
+        let user;
+        const response = await request.json();
+    }
+
+
+    async gotoId(id){
+        const request = await fetch(this.url + "/"+id,{
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        let user;
+        const response = await request.json();
+        user = {
+          'id': response.id,
+          'name': response.name,
+          'password': response.password,
+          'idRole': response.idRole
+        };
+        return user;
+    }
 
     async save(userData) {
         const request = await fetch(this.url, {
@@ -15,7 +47,6 @@ export class UserService{
         const response =  await request.json();
         return response;
     }
-
 
     async fetchAll() {
         const request = await fetch(this.url, {

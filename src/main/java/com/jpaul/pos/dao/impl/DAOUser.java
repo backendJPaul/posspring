@@ -60,7 +60,6 @@ public class DAOUser extends DAO implements IDAOUser {
         return setAll();
     }
 
-
     @Override
     public List<User> search(String pattern) throws Exception {
 
@@ -96,8 +95,7 @@ public class DAOUser extends DAO implements IDAOUser {
         }
         user.setName(this.resultSet.getString("name"));
         user.setPassword(this.resultSet.getString("password"));
-        user.setRole(this.resultSet.getString("role"));
-
+        user.setIdRole(this.resultSet.getInt("idRole"));
         return user;
     }
 

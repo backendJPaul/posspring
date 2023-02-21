@@ -4,7 +4,13 @@ import {RoleService} from './modules/RoleService.js'
 const userService = new UserService("api/users");
 const roleService = new RoleService("api/roles");
 
-let users = await userService.fetchAll();
+
+
+const urlParams = window.location.search;
+const params = new URLSearchParams(urlParams);
+
+
+let users = await userService.fetchAll(params.get("param"));
 
 for(let user of users) {
 
@@ -46,10 +52,16 @@ for(let user of users) {
         window.location.href = "delete.html?id=" + user.id;
     }
     deleteButton.innerHTML = "delete";
-
     userActions.appendChild(updateButton);
     userActions.appendChild(deleteButton);
     userRow.appendChild(userActions);
 
     document.getElementById("tableSection").appendChild(userRow);
+}
+
+let searchButton = document.getElementById("searchUserButton");
+searchButton.addEventListener("click", searchUserButtonFunction);
+
+function searchUserButtonFunction() {
+    window.location.href = "index.html?param=" + document.getElementById("patternText").value;
 }

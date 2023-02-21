@@ -7,8 +7,20 @@
 </head>
 <body>
     <a href="registrer.html">Add user</a>
-    <ul id ="list"></ul>
+    <a href="index.html">Listar todos</a>
     <script type="module" src="index.js"></script>
+
+    <form action="#">
+        <fieldset>
+            <legend>Buscar usuario</legend>
+
+            <label for="patternText">Nombre</label>
+            <input type="text" id="patternText" name="patternText">
+            <input type="button" value="Buscar usuario" id="searchUserButton"/>
+        </fieldset>
+    </form>
+
+    <ul id ="list"></ul>
     <section id="tableSection">
         <header>
             <div class="col">ID</div>

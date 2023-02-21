@@ -8,4 +8,5 @@ const urlParams = window.location.search;
 const params = new URLSearchParams(urlParams);
 
 let user = await userService.delete(params.get("id"));
+window.location.href = "index.html";
 

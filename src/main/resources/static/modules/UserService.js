@@ -2,13 +2,24 @@ export class UserService{
     constructor(url){
         this.url = url;
     }
+
     async delete(id){
         const request = await fetch(this.url + "/" + id,{
             method : "DELETE",
             headers:{
-
-            }    
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         });
+        let user;
+        const response = await request.json();
+        user = {
+            'id': response.id,
+            'name': response.name,
+            'password': response.password,
+            'idRole': response.idRole
+        };
+        return user;
     }
 
     async update(userData){
@@ -23,7 +34,6 @@ export class UserService{
         let user;
         const response = await request.json();
     }
-
 
     async gotoId(id){
         const request = await fetch(this.url + "/"+id,{
@@ -57,7 +67,11 @@ export class UserService{
         return response;
     }
 
-    async fetchAll() {
+    async fetchAll(pattern) {
+        if(pattern){
+            this.url  = this.url + "/search/" + pattern;
+        }
+
         const request = await fetch(this.url, {
             method: "GET",
             headers: {
